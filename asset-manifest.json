@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fea098d0.chunk.css",
+    "main.js": "/static/js/main.c2b17668.chunk.js",
+    "main.js.map": "/static/js/main.c2b17668.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6c35a994.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6c35a994.js.map",
+    "static/js/2.edc739e5.chunk.js": "/static/js/2.edc739e5.chunk.js",
+    "static/js/2.edc739e5.chunk.js.map": "/static/js/2.edc739e5.chunk.js.map",
+    "static/js/3.9ca2a300.chunk.js": "/static/js/3.9ca2a300.chunk.js",
+    "static/js/3.9ca2a300.chunk.js.map": "/static/js/3.9ca2a300.chunk.js.map",
+    "static/js/4.f109ec5a.chunk.js": "/static/js/4.f109ec5a.chunk.js",
+    "static/js/4.f109ec5a.chunk.js.map": "/static/js/4.f109ec5a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.fea098d0.chunk.css.map": "/static/css/main.fea098d0.chunk.css.map",
+    "static/js/2.edc739e5.chunk.js.LICENSE.txt": "/static/js/2.edc739e5.chunk.js.LICENSE.txt",
+    "static/media/de.ftl": "/static/media/de.5192f118.ftl",
+    "static/media/en.ftl": "/static/media/en.91cb76db.ftl"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6c35a994.js",
+    "static/js/2.edc739e5.chunk.js",
+    "static/css/main.fea098d0.chunk.css",
+    "static/js/main.c2b17668.chunk.js"
+  ]
+}
