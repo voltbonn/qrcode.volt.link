@@ -1,10 +1,5 @@
 import classes from './App.module.css'
 
-import {
-  Switch,
-  Route,
-} from 'react-router-dom'
-
 import Localized from '../fluent/Localized.js'
 
 function App() {
