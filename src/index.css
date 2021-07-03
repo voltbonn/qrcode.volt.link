@@ -216,6 +216,7 @@ textarea {
   resize: vertical;
   padding-bottom: var(--basis_x2);
   min-height: 20px; /* TODO: Find out why this is value works. */
+  box-sizing: border-box;
 }
 
 button,

@@ -1,10 +1,12 @@
 import classes from './App.module.css'
 
 import Localized from '../fluent/Localized.js'
+import Generator from './Generator.js'
 
 function App() {
   return (<>
     <div className={classes.app}>
+      <Generator />
     </div>
     <footer>
       <a href="mailto:thomas.rosen@volteuropa.org"><Localized id="contact" /></a>

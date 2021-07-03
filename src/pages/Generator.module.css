@@ -1,0 +1,17 @@
+
+.qrcodeWrapper {
+  margin: 32px auto;
+  width: 400px;
+  max-width: 100%;
+}
+
+.qrcodeContentInput {
+  display: block;
+  margin: 32px auto;
+  width: 400px;
+  max-width: 100%;
+}
+.downloadButton {
+  margin: 32px 0;
+  width: 100%;
+}
