@@ -21,11 +21,6 @@ const qrCode = new QRCodeStyling({
   backgroundOptions: {
     color: '#ffffff',
   },
-  imageOptions: {
-    crossOrigin: 'anonymous',
-    margin: 0,
-    imageSize: 0.4,
-  },
   margin: 50,
   qrOptions: {
     errorCorrectionLevel: 'M',
