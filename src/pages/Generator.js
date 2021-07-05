@@ -171,8 +171,8 @@ function Generator({ getString }) {
 
   const handleDownload_svg = () => {
     const b64 = 'data:image/svg+xml;base64,' + btoa(qrcode)
-    trigger_download('volt-qrcode.svg', b64)
     window.umami.trackEvent('E: svg')
+    trigger_download('volt-qrcode.svg', b64)
   }
   const handleDownload_jpeg = async () => {
     var canvas = conversion_canvas_ref.current
@@ -184,8 +184,8 @@ function Generator({ getString }) {
 
     var b64 = canvas.toDataURL('image/jpeg')
 
-    trigger_download('volt-qrcode.jpeg', b64)
     window.umami.trackEvent('E: jpeg')
+    trigger_download('volt-qrcode.jpeg', b64)
   }
   const handleDownload_png = async () => {
     var canvas = conversion_canvas_ref.current
@@ -197,8 +197,8 @@ function Generator({ getString }) {
 
     var b64 = canvas.toDataURL('image/png')
 
-    trigger_download('volt-qrcode.png', b64)
     window.umami.trackEvent('E: png')
+    trigger_download('volt-qrcode.png', b64)
   }
 
 
