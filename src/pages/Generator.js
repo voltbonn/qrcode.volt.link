@@ -7,6 +7,8 @@ import MultiButton from '../components/MultiButton.js'
 import qrcode_generator from 'qrcode-generator'
 import Canvg from 'canvg'
 
+import { useLocation } from 'react-router-dom'
+
 function trigger_download(name, data) {
   const a = document.createElement('a')
   document.body.appendChild(a)
@@ -46,11 +48,21 @@ const colors = {
 function Generator({ getString }) {
   const conversion_canvas_ref = useRef(null)
 
+  const location = useLocation()
+  let location_search = location.search
+    .substr(1)
+    .split('&')
+    .reduce((obj, val) => {
+      const pair = val.split('=')
+      obj[pair[0]] = pair[1]
+      return obj
+    }, {})
+
   const [size, setSize] = useState('1000')
   const [realSize, setRealSize] = useState(null)
 
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('M')
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(location_search.c ||'')
   const [qrcode, setQrcode] = useState(null)
 
   const [backgroundColor, setBackgroundColor] = useState('white')
@@ -349,6 +361,7 @@ function Generator({ getString }) {
       placeholder={getString('text_content_input_placeholder')}
       onChange={handleContentChange}
       style={{marginTop: '0'}}
+      defaultValue={content}
     ></textarea>
 
     {
