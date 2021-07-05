@@ -177,6 +177,7 @@ function Generator({ getString }) {
     window.umami.trackEvent('Logo: ' + displayLogo)
     window.umami.trackEvent('ECL: ' + errorCorrectionLevel)
     window.umami.trackEvent('Size: ' + size)
+    window.umami.trackEvent('Length: ' + Math.round((content.length * 0.1) * 10))
     trigger_download('volt-qrcode.svg', b64)
   }
   const handleDownload_jpeg = async () => {
@@ -195,6 +196,7 @@ function Generator({ getString }) {
     window.umami.trackEvent('Logo: ' + displayLogo)
     window.umami.trackEvent('ECL: ' + errorCorrectionLevel)
     window.umami.trackEvent('Size: ' + size)
+    window.umami.trackEvent('Length: ' + Math.round((content.length * 0.1) * 10))
     trigger_download('volt-qrcode.jpeg', b64)
   }
   const handleDownload_png = async () => {
@@ -213,6 +215,7 @@ function Generator({ getString }) {
     window.umami.trackEvent('Logo: ' + displayLogo)
     window.umami.trackEvent('ECL: ' + errorCorrectionLevel)
     window.umami.trackEvent('Size: ' + size)
+    window.umami.trackEvent('Length: ' + Math.round((content.length * 0.1) * 10))
     trigger_download('volt-qrcode.png', b64)
   }
 
