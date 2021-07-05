@@ -283,11 +283,11 @@ function Generator({ getString }) {
       items={[
         {
           value: 'yes',
-          title: 'Yes'
+          title: getString('label_display_logo_yes')
         },
         {
           value: 'no',
-          title: 'No'
+          title: getString('label_display_logo_no')
         },
       ]}
     />
@@ -303,19 +303,19 @@ function Generator({ getString }) {
       items={[
         {
           value: 'L',
-          title: 'Low ~7%'
+          title: getString('label_error_correction_level_low')
         },
         {
           value: 'M',
-          title: 'Medium ~15%'
+          title: getString('label_error_correction_level_medium')
         },
         {
           value: 'Q',
-          title: 'Quartile ~25%'
+          title: getString('label_error_correction_level_quartile')
         },
         {
           value: 'H',
-          title: 'High ~30%'
+          title: getString('label_error_correction_level_high')
         },
       ]}
     />
@@ -355,7 +355,7 @@ function Generator({ getString }) {
     <h1><Localized id="website_title" /></h1>
     <br />
 
-    <p>Enter a URL or other text.</p>
+    <p><Localized id="text_content_input_info" /></p>
     <textarea
       className={classes.qrcodeContentInput}
       placeholder={getString('text_content_input_placeholder')}
@@ -374,13 +374,13 @@ function Generator({ getString }) {
       qrcode === null
         ? null
         : <>
-            <span className={classes.qrCodeSvgWrapper} dangerouslySetInnerHTML={{ __html: qrcode }}></span>
+          <span className={classes.qrCodeSvgWrapper} dangerouslySetInnerHTML={{ __html: qrcode }}></span>
 
-            <h2>Download</h2>
-            <button onClick={handleDownload_svg} className={'green ' + classes.downloadButton}>SVG</button>
-            <button onClick={handleDownload_jpeg} className={'green ' + classes.downloadButton}>JPEG</button>
-            <button onClick={handleDownload_png} className={'green ' + classes.downloadButton}>PNG</button>
-          </>
+          <h2><Localized id="download_headline" /></h2>
+          <button onClick={handleDownload_svg} className={'green ' + classes.downloadButton}><Localized id="svg_label" /></button>
+          <button onClick={handleDownload_jpeg} className={'green ' + classes.downloadButton}><Localized id="jpeg_label" /></button>
+          <button onClick={handleDownload_png} className={'green ' + classes.downloadButton}><Localized id="png_label" /></button>
+        </>
     }
 
     <canvas style={{display:'none'}} ref={conversion_canvas_ref} />
