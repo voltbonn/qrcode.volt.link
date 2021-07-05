@@ -5,7 +5,7 @@ website_title = Volt QR-Code Generator
 contact = Contact
 source_code = Source Code
 
-content_placeholder = https:// …  or Text
+text_content_input_placeholder = https:// …  or Text
 
 filetype_headline = Choose between Vector (VSG) or Pixel (PNG) Image.
 size_headline = Size of the final pixel graphics
