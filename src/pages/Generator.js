@@ -9,7 +9,7 @@ import QRCodeStyling from 'qr-code-styling'
 const size = 1000
 
 const qrCode = new QRCodeStyling({
-  experimental: true,
+  experimental: false,
   width: size,
   height: size,
   type: 'svg',
