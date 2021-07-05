@@ -1,17 +1,32 @@
 
 .qrcodeWrapper {
   margin: 32px auto;
-  width: 400px;
+  min-width: 400px;
+  width: auto;
   max-width: 100%;
 }
 
 .qrcodeContentInput {
   display: block;
   margin: 32px auto;
-  width: 400px;
+  min-width: 400px;
+  width: 100%;
   max-width: 100%;
 }
-.downloadButton {
-  margin: 32px 0;
-  width: 100%;
+
+.qrCodeSvgWrapper{
+  width: 320px;
+  max-width: 100%;
+  display: block;
+}
+.qrCodeSvgWrapper svg{
+  max-width: 100%;
+  height: auto;
+}
+
+.downloadButton:first-of-type {
+  margin-left: 0;
+}
+.downloadButton:last-of-type {
+  margin-right: 0;
 }
