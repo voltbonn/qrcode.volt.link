@@ -44,21 +44,21 @@ console.log('qrCode', qrCode)
 //   a.remove()
 // }
 
-function getQrcodeBounds(svgText){
-  const matches = [...svgText.matchAll(/<rect x="([0-9]+)" y="([0-9]+)" width="([0-9]+)"/gm)]
+// function getQrcodeBounds(svgText){
+//   const matches = [...svgText.matchAll(/<rect x="([0-9]+)" y="([0-9]+)" width="([0-9]+)"/gm)]
 
-  const dot_size = Math.min(...matches.map(match => match[3]))
+//   const dot_size = Math.min(...matches.map(match => match[3]))
 
-  const x_all = matches.map(match => match[1])
-  const x_min = Math.min(...x_all)
-  const x_max = Math.max(...x_all) + dot_size - x_min
+//   const x_all = matches.map(match => match[1])
+//   const x_min = Math.min(...x_all)
+//   const x_max = Math.max(...x_all) + dot_size - x_min
 
-  const y_all = matches.map(match => match[2])
-  const y_min = Math.min(...y_all)
-  const y_max = Math.max(...y_all) + dot_size - y_min
+//   const y_all = matches.map(match => match[2])
+//   const y_min = Math.min(...y_all)
+//   const y_max = Math.max(...y_all) + dot_size - y_min
 
-  return { x_min, x_max, y_min, y_max, dot_size }
-}
+//   return { x_min, x_max, y_min, y_max, dot_size }
+// }
 
 function Generator({ getString }) {
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('M')
@@ -124,10 +124,10 @@ function Generator({ getString }) {
     qrCode.download({ name: 'volt-qrcode', extension: 'png' })
     window.umami.trackEvent('E: png')
   }
-  const handleDownload_webp = () => {
-    qrCode.download({ name: 'volt-qrcode', extension: 'webp' })
-    window.umami.trackEvent('E: webp')
-  }
+  // const handleDownload_webp = () => {
+  //   qrCode.download({ name: 'volt-qrcode', extension: 'webp' })
+  //   window.umami.trackEvent('E: webp')
+  // }
 
   return <div className={classes.qrcodeWrapper}>
     <h1><Localized id="website_title" /></h1>
