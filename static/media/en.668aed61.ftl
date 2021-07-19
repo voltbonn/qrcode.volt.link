@@ -26,10 +26,12 @@ label_display_logo_yes = Yes
 label_display_logo_no = No
 
 error_correction_level_headline = Error Resistance
-label_error_correction_level_low = Low ~7%
-label_error_correction_level_medium = Medium ~15%
-label_error_correction_level_quartile = Quartile ~25%
-label_error_correction_level_high = High ~30%
+label_error_correction_level_L = Low ~7%
+label_error_correction_level_M = Medium ~15%
+label_error_correction_level_Q = Quartile ~25%
+label_error_correction_level_H = High ~30%
+
+error_qrcode_not_usable = Error: This combination of settings does not work for the content. Try another color combination. Some like black and white don't need as much error resistance.
 
 download_headline = Download
 svg_label = SVG
