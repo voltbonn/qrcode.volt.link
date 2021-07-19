@@ -187,7 +187,7 @@ function Generator({ getString }) {
   const [foregroundColor, setForegroundColor] = useState('purple')
   const [displayLogo, setDisplayLogo] = useState('yes')
 
-  const [minDisplayLogo, setMinDisplayLogo] = useState(false)
+  const [minDisplayLogo /*, setMinDisplayLogo*/] = useState(true)
   const [minErrorCorrectionLevel, setMinErrorCorrectionLevel] = useState(errorCorrectionLevels.length - 1)
 
   const real_minErrorCorrectionLevel = Math.min(minErrorCorrectionLevel, errorCorrectionLevels.length - 1)
@@ -238,14 +238,14 @@ function Generator({ getString }) {
         QrScanner.scanImage(b64)
           .then(result => {
             setMinErrorCorrectionLevel(min_error_correction_level)
-            setMinDisplayLogo(displayLogo)
+            // setMinDisplayLogo(displayLogo)
             setQrcodeWorks(true)
           })
           .catch(error => {
             if (min_error_correction_level < errorCorrectionLevels.length - 1) {
               checkQrcode(displayLogo, min_error_correction_level + 1)
-            } else if (displayLogo === true) {
-              checkQrcode(false, min_error_correction_level)
+            // } else if (displayLogo === true) {
+            //   checkQrcode(false, min_error_correction_level)
             } else {
               setQrcodeWorks(false)
             }
@@ -253,15 +253,16 @@ function Generator({ getString }) {
       }
     }
 
-    checkQrcode(true, 0)
+    checkQrcode(displayLogo, 0)
   }, [
     content,
     backgroundColor,
     foregroundColor,
+    displayLogo,
     conversion_canvas_ref,
     setQrcodeWorks,
     setMinErrorCorrectionLevel,
-    setMinDisplayLogo,
+    // setMinDisplayLogo,
   ])
 
   useEffect(() => {
