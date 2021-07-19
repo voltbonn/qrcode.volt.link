@@ -438,35 +438,6 @@ function Generator({ getString }) {
             <br />
           </>
     }
-
-    <h2>
-      <Localized id="size_headline" />
-    </h2>
-    <MultiButton
-      onChange={setSize}
-      ariaLabel={getString('size_headline')}
-      defaultValue={size}
-      items={[
-        {
-          value: '500',
-          title: '500px'
-        },
-        {
-          value: '1000',
-          title: '1000px'
-        },
-        {
-          value: '2000',
-          title: '2000px'
-        },
-        {
-          value: '4000',
-          title: '4000px'
-        },
-      ]}
-    />
-    <br />
-    <br />
   </>
 
   return <div className={classes.qrcodeWrapper}>
@@ -494,7 +465,36 @@ function Generator({ getString }) {
         : (
           qrcodeWorks
             ? <>
+              <br />
+
               <span className={classes.qrCodeSvgWrapper} dangerouslySetInnerHTML={{ __html: qrcode }}></span>
+              <h2>
+                <Localized id="size_headline" />
+              </h2>
+              <MultiButton
+                onChange={setSize}
+                ariaLabel={getString('size_headline')}
+                defaultValue={size}
+                items={[
+                  {
+                    value: '500',
+                    title: '500px'
+                  },
+                  {
+                    value: '1000',
+                    title: '1000px'
+                  },
+                  {
+                    value: '2000',
+                    title: '2000px'
+                  },
+                  {
+                    value: '4000',
+                    title: '4000px'
+                  },
+                ]}
+              />
+              <br />
 
               <h2><Localized id="download_headline" /></h2>
               <button onClick={handleDownload_svg} className={'green ' + classes.downloadButton}><Localized id="svg_label" /></button>
