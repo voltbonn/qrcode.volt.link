@@ -20,6 +20,7 @@ yellow = Yellow
 green = Green
 blue = Blue
 red = Red
+transparent = Transparent
 
 display_logo_headline = Display Logo
 label_display_logo_yes = Yes

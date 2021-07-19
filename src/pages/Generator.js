@@ -47,6 +47,7 @@ const colors = {
   'green': '#1BBE6F',
   'blue': '#82D0F4',
   'red': '#E63E12',
+  'transparent': 'transparent',
 }
 
 function generate_qr_code({ content, size, errorCorrectionLevel, backgroundColor, foregroundColor, displayLogo }) {
@@ -119,7 +120,7 @@ function generate_qr_code({ content, size, errorCorrectionLevel, backgroundColor
       }
     }
 
-    if (this_foregroundColor !== 'white') {
+    if (this_foregroundColor !== 'white' && this_backgroundColor !== 'transparent') {
       this_backgroundColor = 'white'
     }
 
@@ -183,7 +184,7 @@ function Generator({ getString }) {
   const [qrcode, setQrcode] = useState(null)
   const [qrcodeWorks, setQrcodeWorks] = useState(null)
 
-  const [backgroundColor, setBackgroundColor] = useState('purple')
+  const [backgroundColor, setBackgroundColor] = useState('white')
   const [foregroundColor, setForegroundColor] = useState('purple')
   const [displayLogo, setDisplayLogo] = useState('yes')
 
@@ -212,13 +213,22 @@ function Generator({ getString }) {
   }, [setContent])
 
   useEffect(() => {
+    let backgroundColor_to_use = backgroundColor
+    if (backgroundColor_to_use === 'transparent') {
+      if (foregroundColor === 'white') {
+        backgroundColor_to_use = 'black'
+      } else {
+        backgroundColor_to_use = 'white'
+      }
+    }
+
     async function checkQrcode(displayLogo, min_error_correction_level) {
       const errorCorrectionLevel = errorCorrectionLevels[min_error_correction_level]
       const { qrcode_svg, realCanvasSize } = generate_qr_code({
         content,
         size: 1000,
         errorCorrectionLevel,
-        backgroundColor,
+        backgroundColor: backgroundColor_to_use,
         foregroundColor,
         displayLogo,
       })
@@ -349,11 +359,11 @@ function Generator({ getString }) {
     title: getString(color)
   }))
 
-  let background_colors = ['purple', 'white', 'black'] // 'yellow', 'green', 'red', 'blue'
+  let background_colors = ['purple', 'white', 'black', 'transparent'] // 'yellow', 'green', 'red', 'blue'
   if (foregroundColor !== 'white') {
-    background_colors = ['white']
+    background_colors = ['white', 'transparent']
   } else if (foregroundColor === 'white') {
-    background_colors = ['purple', 'black'] // 'yellow', 'green', 'blue', 'red',
+    background_colors = ['purple', 'black', 'transparent'] // 'yellow', 'green', 'blue', 'red',
   }
   background_colors = background_colors.map(color => ({
     value: color,
@@ -499,8 +509,12 @@ function Generator({ getString }) {
 
               <h2><Localized id="download_headline" /></h2>
               <button onClick={handleDownload_svg} className={'green ' + classes.downloadButton}><Localized id="svg_label" /></button>
-              <button onClick={handleDownload_jpeg} className={'green ' + classes.downloadButton}><Localized id="jpeg_label" /></button>
               <button onClick={handleDownload_png} className={'green ' + classes.downloadButton}><Localized id="png_label" /></button>
+              {
+                backgroundColor === 'transparent'
+                ? null
+                : <button onClick={handleDownload_jpeg} className={'green ' + classes.downloadButton}><Localized id="jpeg_label" /></button>
+              }
             </>
             : <p><strong><Localized id="error_qrcode_not_usable" /></strong></p>
         )

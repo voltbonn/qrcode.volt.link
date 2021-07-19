@@ -20,6 +20,7 @@ yellow = Gelb
 green = Grün
 blue = Blau
 red = Rot
+transparent = Transparent
 
 display_logo_headline = Logo Wassermarke
 label_display_logo_yes = Ja
