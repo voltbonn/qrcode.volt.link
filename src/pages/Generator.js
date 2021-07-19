@@ -65,7 +65,7 @@ function Generator({ getString }) {
   const [content, setContent] = useState(location_search.c ||'')
   const [qrcode, setQrcode] = useState(null)
 
-  const [backgroundColor, setBackgroundColor] = useState('white')
+  const [backgroundColor, setBackgroundColor] = useState('purple')
   const [foregroundColor, setForegroundColor] = useState('purple')
   const [displayLogo, setDisplayLogo] = useState('yes')
 
