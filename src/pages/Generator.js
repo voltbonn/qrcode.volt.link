@@ -50,7 +50,7 @@ const colors = {
   'transparent': 'transparent',
 }
 
-function generate_qr_code({ content, size, errorCorrectionLevel, backgroundColor, foregroundColor, displayLogo }) {
+function generate_qr_code({ content, size, margin, errorCorrectionLevel, backgroundColor, foregroundColor, displayLogo }) {
   if (displayLogo === 'yes') {
     displayLogo = true
   } else if (displayLogo === 'no') {
@@ -65,6 +65,7 @@ function generate_qr_code({ content, size, errorCorrectionLevel, backgroundColor
   } else {
     // generate qr code
     const size_int = parseInt(size)
+    const margin_int = parseInt(margin) || 0
 
     const qr = qrcode_generator(0, errorCorrectionLevel)
     qr.addData(content)
@@ -75,13 +76,13 @@ function generate_qr_code({ content, size, errorCorrectionLevel, backgroundColor
 
     let svg = qr.createSvgTag({
       cellSize: cellSize,
-      margin: cellSize * 1,
+      margin: cellSize * margin_int,
       scalable: true,
     })
 
     const realCanvasSize = (
       (qr_pixel_count * cellSize) // qrcode without margin
-      + (cellSize * 2) // margin
+      + (cellSize * (margin_int * 2)) // margin
     )
 
 
@@ -184,6 +185,8 @@ function Generator({ getString }) {
   const [qrcode, setQrcode] = useState(null)
   const [qrcodeWorks, setQrcodeWorks] = useState(null)
 
+  const [margin, setMargin] = useState('1')
+
   const [backgroundColor, setBackgroundColor] = useState('white')
   const [foregroundColor, setForegroundColor] = useState('purple')
   const [displayLogo, setDisplayLogo] = useState('yes')
@@ -227,6 +230,7 @@ function Generator({ getString }) {
       const { qrcode_svg, realCanvasSize } = generate_qr_code({
         content,
         size: 1000,
+        margin: 4,
         errorCorrectionLevel,
         backgroundColor: backgroundColor_to_use,
         foregroundColor,
@@ -282,6 +286,7 @@ function Generator({ getString }) {
     } = generate_qr_code({
       content,
       size,
+      margin,
       errorCorrectionLevel: real_errorCorrectionLevel,
       backgroundColor,
       foregroundColor,
@@ -295,6 +300,7 @@ function Generator({ getString }) {
     real_errorCorrectionLevel,
     content,
     size,
+    margin,
     backgroundColor,
     foregroundColor,
     displayLogo,
@@ -449,6 +455,26 @@ function Generator({ getString }) {
             <br />
           </>
     }
+
+    <h2>
+      <Localized id="margin_headline" />
+    </h2>
+    <MultiButton
+      onChange={setMargin}
+      ariaLabel={getString('margin_headline')}
+      defaultValue={margin}
+      items={[
+        {
+          value: '1',
+          title: getString('label_margin_yes')
+        },
+        {
+          value: '0',
+          title: getString('label_margin_no')
+        },
+      ]}
+    />
+    <br />
   </>
 
   return <div className={classes.qrcodeWrapper}>

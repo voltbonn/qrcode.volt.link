@@ -32,6 +32,10 @@ label_error_correction_level_M = Medium ~15%
 label_error_correction_level_Q = Quartile ~25%
 label_error_correction_level_H = High ~30%
 
+margin_headline = Margin
+label_margin_yes = Ja
+label_margin_no = Nein
+
 error_qrcode_not_usable = Error: This combination of settings does not work for the content. Try another color combination. Some like black and white don't need as much error resistance.
 
 download_headline = Download
