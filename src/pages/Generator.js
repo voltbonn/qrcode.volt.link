@@ -11,6 +11,8 @@ import { useLocation } from 'react-router-dom'
 
 import QrScanner from 'qr-scanner'
 
+qrcode_generator.stringToBytes = qrcode_generator.stringToBytesFuncs['UTF-8'] // make QR-Code understand UTF-8
+
 function trigger_download(name, data) {
   const a = document.createElement('a')
   document.body.appendChild(a)
