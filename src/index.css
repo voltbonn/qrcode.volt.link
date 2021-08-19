@@ -109,15 +109,22 @@ body {
   font-size: var(--body-font-size);
 }
 
-code {
+code,
+code * {
   font-family: 'Ubuntu Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-code.filled{
-  padding: var(--basis_x0_2);
+code.filled,
+kbd {
+  padding: var(--basis_x0_2) var(--basis_x0_5);
   margin: 0 var(--basis_x0_2);
   border-radius: var(--basis_x0_5);
   background: var(--on-background);
   color: var(--background);
+  font-weight: bold;
+}
+
+pre.hljs {
+  margin: var(--basis) 0;
 }
 
 a,
@@ -182,7 +189,8 @@ p {
   text-decoration: inherit;
 }
 
-ul {
+ul,
+ol {
   margin-inline-start: var(--basis_x4);
   max-width: calc(100% - var(--basis_x4));
 }
@@ -191,12 +199,24 @@ ul {
   font-size: var(--body2-font-size);
 }
 
+
+textarea,
+div[contentEditable=true],
+input[type="text"],
+input[type="email"],
+input[type="url"] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 button,
 textarea,
+div[contentEditable=true],
 input[type="text"],
 input[type="email"],
 input[type="url"],
-select {
+select,
+.wrapped_select {
   min-width: 0px;
   outline: none;
   border: none;
@@ -204,6 +224,7 @@ select {
   font-size: var(--body-font-size);
 }
 textarea,
+div[contentEditable=true],
 input[type="text"],
 input[type="email"],
 input[type="url"] {
@@ -213,6 +234,7 @@ input[type="url"] {
   box-shadow: inset 0 0 0 calc(0.2 * var(--basis)) var(--on-background);
 }
 textarea.inverted,
+div[contentEditable=true].inverted,
 input[type="text"].inverted,
 input[type="email"].inverted,
 input[type="url"].inverted {
@@ -222,6 +244,7 @@ input[type="url"].inverted {
 }
 
 textarea:focus,
+div[contentEditable=true]:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus {
@@ -230,14 +253,16 @@ input[type="url"]:focus {
   box-shadow: inset 0 0 0 calc(0.2 * var(--basis)) var(--on-background-contrast);
 }
 
-textarea {
+textarea,
+div[contentEditable=true] {
   resize: vertical;
-  padding-bottom: var(--basis_x2);
+  padding-bottom: var(--basis);
   min-height: 20px; /* TODO: Find out why this is value works. */
 }
 
 button,
-select {
+select,
+.wrapped_select {
   font-weight: bold;
   transition: transform 0.2s ease;
   position: relative;
@@ -338,6 +363,10 @@ button.hasIcon .icon.big {
   width: auto;
 }
 
+button.hasIcon .icon.image {
+  height: var(--basis_x16);
+  margin: calc(-1 * var(--basis)) calc(-2 * var(--basis));
+}
 
 hr {
   margin: var(--basis_x4) 0;
@@ -346,8 +375,100 @@ hr {
   background: var(--on-background);
 }
 
+blockquote {
+  position: relative;
+  padding-left: var(--basis);
+}
+blockquote::before {
+  /* content: "”"; */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--basis_x4));
+  font-size: var(--basis_x4);
+  border-right: var(--basis_x0_2) solid currentColor;
+  width: var(--basis_x4);
+  text-align: right;
+  padding-right: var(--basis_x0_5);
+  box-sizing: border-box;
+}
+
+img.emoji {
+   height: 1em;
+   width: 1em;
+   margin: 0 .05em 0 .1em;
+   vertical-align: -0.1em;
+}
+
 @media (max-width: 1000px) {
   .hideOnSmallScreen {
     display: none;
   }
 }
+
+
+
+/* reset/remove select styles */
+.wrapped_select select {
+  /* A reset of styles, including removing the default dropdown arrow */
+  appearance: none;
+  /* Additional resets for further consistency */
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+
+  padding: var(--basis) var(--basis_x2);
+}
+.wrapped_select select::-ms-expand {
+  display: none;
+}
+
+/* wrap select in new styles */
+.wrapped_select {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+.wrapped_select,
+.wrapped_select select{
+  width: calc(12 * var(--basis));
+  height: calc(6 * var(--basis));
+  max-height: calc(6 * var(--basis));
+}
+.wrapped_select select {
+  padding: var(--basis) var(--basis_x2);
+}
+.wrapped_select:before {
+  z-index: 1;
+  content: attr(placeholder);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: inherit;
+  padding: var(--basis) var(--basis_x2);
+  pointer-events: none;
+}
+.wrapped_select:after {
+  content: '';
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  right: var(--basis_x2);
+  height: var(--basis);
+  width: var(--basis_x2);
+  margin-top: calc(-1 * var(--basis_x0_5));
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  background-color: currentColor;
+  pointer-events: none;
+}
+
