@@ -310,13 +310,13 @@ function Generator({ getString }) {
 
   const handleDownload_svg = () => {
     const b64 = 'data:image/svg+xml;base64,' + btoa(qrcode)
-    window.umami.trackEvent('E: svg')
-    window.umami.trackEvent('BG: ' + backgroundColor)
-    window.umami.trackEvent('FG: ' + foregroundColor)
-    window.umami.trackEvent('Logo: ' + displayLogo)
-    window.umami.trackEvent('ECL: ' + errorCorrectionLevel)
-    window.umami.trackEvent('Size: ' + size)
-    window.umami.trackEvent('Length: ' + Math.round((content.length * 0.1) * 10))
+    window.umami.track('E: svg')
+    window.umami.track('BG: ' + backgroundColor)
+    window.umami.track('FG: ' + foregroundColor)
+    window.umami.track('Logo: ' + displayLogo)
+    window.umami.track('ECL: ' + errorCorrectionLevel)
+    window.umami.track('Size: ' + size)
+    window.umami.track('Length: ' + Math.round((content.length * 0.1) * 10))
     trigger_download('volt-qrcode.svg', b64)
   }
   const handleDownload_jpeg = async () => {
@@ -329,13 +329,13 @@ function Generator({ getString }) {
 
     var b64 = canvas.toDataURL('image/jpeg')
 
-    window.umami.trackEvent('E: jpeg')
-    window.umami.trackEvent('BG: ' + backgroundColor)
-    window.umami.trackEvent('FG: ' + foregroundColor)
-    window.umami.trackEvent('Logo: ' + displayLogo)
-    window.umami.trackEvent('ECL: ' + errorCorrectionLevel)
-    window.umami.trackEvent('Size: ' + size)
-    window.umami.trackEvent('Length: ' + Math.round((content.length * 0.1) * 10))
+    window.umami.track('E: jpeg')
+    window.umami.track('BG: ' + backgroundColor)
+    window.umami.track('FG: ' + foregroundColor)
+    window.umami.track('Logo: ' + displayLogo)
+    window.umami.track('ECL: ' + errorCorrectionLevel)
+    window.umami.track('Size: ' + size)
+    window.umami.track('Length: ' + Math.round((content.length * 0.1) * 10))
     trigger_download('volt-qrcode.jpeg', b64)
   }
   const handleDownload_png = async () => {
@@ -348,13 +348,13 @@ function Generator({ getString }) {
 
     var b64 = canvas.toDataURL('image/png')
 
-    window.umami.trackEvent('E: png')
-    window.umami.trackEvent('BG: ' + backgroundColor)
-    window.umami.trackEvent('FG: ' + foregroundColor)
-    window.umami.trackEvent('Logo: ' + displayLogo)
-    window.umami.trackEvent('ECL: ' + errorCorrectionLevel)
-    window.umami.trackEvent('Size: ' + size)
-    window.umami.trackEvent('Length: ' + Math.round((content.length * 0.1) * 10))
+    window.umami.track('E: png')
+    window.umami.track('BG: ' + backgroundColor)
+    window.umami.track('FG: ' + foregroundColor)
+    window.umami.track('Logo: ' + displayLogo)
+    window.umami.track('ECL: ' + errorCorrectionLevel)
+    window.umami.track('Size: ' + size)
+    window.umami.track('Length: ' + Math.round((content.length * 0.1) * 10))
     trigger_download('volt-qrcode.png', b64)
   }
 
