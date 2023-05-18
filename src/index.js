@@ -29,9 +29,9 @@ function AppLanguageWrapper() {
 
           const language = locale.split('-')[0]
           if (language !== locale) {
-            window.umami.trackEvent('L: ' + language) // Log just the language.
+            window.umami.track('L: ' + language) // Log just the language.
           }
-          window.umami.trackEvent('L: ' + locale) // Log the full locale.
+          window.umami.track('L: ' + locale) // Log the full locale.
         }
       }
     }
